@@ -56,7 +56,9 @@ export const Registration = () => {
         <TextField
           error={Boolean(errors.fullName?.message)}
           helperText={errors.fullName?.message}
-          {...register("fullName", { required: "Enter your name" })}
+          {...register("fullName", {
+            minLength: 4,
+          })}
           className={styles.field}
           label="Полное имя"
           fullWidth
@@ -80,12 +82,6 @@ export const Registration = () => {
           fullWidth
         />
         <Button
-          onClick={() =>
-            setError("password", {
-              type: "custom",
-              message: "Password min length is 5 symbols",
-            })
-          }
           disabled={!isValid}
           type="submit"
           size="large"

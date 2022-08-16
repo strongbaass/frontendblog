@@ -6,38 +6,35 @@ import styles from "./AddComment.module.scss";
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
 
-export const Index = ({ data, user }) => {
+export const Index = () => {
   const { id } = useParams();
-  console.log(data);
+  const userData = useSelector((state) => state.auth.data);
   const [comment, setComment] = useState("");
-  const avatarUrl = user.avatarUrl;
-  const fullName = user.fullName;
+  const avatarUrl = userData.avatarUrl;
+  const fullName = userData.fullName;
+
   const onChangeValue = useCallback((value) => {
     setComment(value);
   }, []);
 
   const onClickAddCommnet = async () => {
     const fields = {
-      comments: [
-        {
-          comment,
-          avatarUrl,
-          fullName,
-        },
-      ],
+      id,
+      comments: {
+        comment,
+        avatarUrl,
+        fullName,
+      },
     };
-    console.log(fields);
-    await axios.patch(`/posts/${id}`, fields);
+    await axios.post(`/comments`, fields);
   };
 
   return (
     <>
       <div className={styles.root}>
-        <Avatar
-          classes={{ root: styles.avatar }}
-          src="https://mui.com/static/images/avatar/5.jpg"
-        />
+        <Avatar classes={{ root: styles.avatar }} src={avatarUrl} />
         <div className={styles.form}>
           <TextField
             label="Написать комментарий"

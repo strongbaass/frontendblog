@@ -9,32 +9,44 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import Skeleton from "@mui/material/Skeleton";
 
-export const CommentsBlock = ({ items, children, isLoading = true }) => {
+export const CommentsBlock = ({ comments, children, isLoading = true }) => {
+  if (!comments) {
+    return <></>;
+  }
+
   return (
     <SideBlock title="Comments">
       <List>
-        {(isLoading ? [...Array(5)] : items).map((obj, index) => (
-          <React.Fragment key={index}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                {isLoading ? (
-                  <Skeleton variant="circular" width={40} height={40} />
-                ) : (
-                  <Avatar alt={obj.fullName} src={obj.avatarUrl} />
-                )}
-              </ListItemAvatar>
-              {isLoading ? (
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Skeleton variant="text" height={25} width={120} />
-                  <Skeleton variant="text" height={18} width={230} />
-                </div>
-              ) : (
-                <ListItemText primary={obj.fullName} secondary={obj.comment} />
-              )}
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </React.Fragment>
-        ))}
+        {isLoading
+          ? [...Array(5)]
+          : comments.map((obj, index) => (
+              <React.Fragment key={index}>
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    {isLoading ? (
+                      <Skeleton variant="circular" width={40} height={40} />
+                    ) : (
+                      <Avatar
+                        alt={obj.comments.fullName}
+                        src={obj.comments.avatarUrl}
+                      />
+                    )}
+                  </ListItemAvatar>
+                  {isLoading ? (
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <Skeleton variant="text" height={25} width={120} />
+                      <Skeleton variant="text" height={18} width={230} />
+                    </div>
+                  ) : (
+                    <ListItemText
+                      primary={obj.comments.fullName}
+                      secondary={obj.comments.comment}
+                    />
+                  )}
+                </ListItem>
+                <Divider variant="inset" component="li" />
+              </React.Fragment>
+            ))}
       </List>
       {children}
     </SideBlock>

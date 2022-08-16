@@ -32,13 +32,11 @@ export const Post = ({
   if (isLoading) {
     return <PostSkeleton />;
   }
-  console.log(imageUrl);
   const onClickRemove = () => {
     if (window.confirm("Are you sure to delete post")) {
       dispatch(fetchRemovePost(id));
     }
   };
-  console.log(imageUrl);
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (

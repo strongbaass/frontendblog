@@ -9,6 +9,7 @@ import axios from "../axios";
 
 export const FullPost = () => {
   const [data, setData] = useState();
+  const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
@@ -24,6 +25,22 @@ export const FullPost = () => {
         alert("Ошибка при получении статьи");
       });
   }, []);
+
+  useEffect(
+    () => {
+      const fetchComments = async () => {
+        await axios.get(`http://localhost:4444/comments/${id}`).then((res) => {
+          setComments(res.data);
+        });
+      };
+      fetchComments().catch((err) => {
+        console.warn(err);
+        alert("Ошибка при получении статьи");
+      });
+    },
+    [],
+    isLoading
+  );
 
   if (isLoading) {
     return <Post isLoading={isLoading} isFullPost />;
@@ -42,16 +59,18 @@ export const FullPost = () => {
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}
-        commentsCount={data.commentsCount}
+        commentsCount={comments.length}
         tags={data.tags}
         isFullPost
       >
         <ReactMarkDown children={data.text} />
       </Post>
 
-      <CommentsBlock items={data.comments} isLoading={false} />
+      {!comments ? null : (
+        <CommentsBlock comments={comments} isLoading={false} />
+      )}
 
-      <Index data={data} user={data.user}/>
+      <Index data={data} user={data.user} />
     </>
   );
 };

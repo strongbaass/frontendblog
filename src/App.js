@@ -11,7 +11,6 @@ import { useEffect } from "react";
 function App() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
-  console.log(isAuth);
   useEffect(() => {
     dispatch(fetchAuthMe());
   }, []);

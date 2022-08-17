@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/auth";
+import { useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import styles from "./Header.module.scss";

@@ -98,7 +98,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: "400px",
       autofocus: true,
-      placeholder: "Введите текст...",
+      placeholder: "Enter text...",
       status: false,
       autosave: {
         enabled: true,
@@ -115,7 +115,7 @@ export const AddPost = () => {
         variant="outlined"
         size="large"
       >
-        Загрузить превью
+        Download photo
       </Button>
       <input
         ref={inputFileRef}
@@ -145,7 +145,7 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Заголовок статьи..."
+        placeholder="Article title..."
         value={title}
         onChange={(e) => setTitlte(e.target.value)}
         fullWidth
@@ -155,7 +155,7 @@ export const AddPost = () => {
         value={tags}
         onChange={(e) => setTags(e.target.value)}
         variant="standard"
-        placeholder="Тэги"
+        placeholder="Tags"
         fullWidth
       />
       <SimpleMDE
@@ -166,10 +166,10 @@ export const AddPost = () => {
       />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
-          {isEditing ? "Сохранить" : "Опубликовать"}
+          {isEditing ? "Save" : "Post"}
         </Button>
         <Link to="/">
-          <Button size="large">Отмена</Button>
+          <Button size="large">Back</Button>
         </Link>
       </div>
     </Paper>

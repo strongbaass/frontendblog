@@ -47,7 +47,7 @@ export const Registration = () => {
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
-        Создание аккаунта
+        Create new account
       </Typography>
       <div className={styles.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
@@ -60,7 +60,7 @@ export const Registration = () => {
             minLength: 4,
           })}
           className={styles.field}
-          label="Полное имя"
+          label="Name"
           fullWidth
         />
         <TextField
@@ -78,7 +78,7 @@ export const Registration = () => {
           helperText={errors.password?.message}
           {...register("password", { required: "Enter your password" })}
           className={styles.field}
-          label="Пароль"
+          label="Passowrd"
           fullWidth
         />
         <Button
@@ -88,7 +88,7 @@ export const Registration = () => {
           variant="contained"
           fullWidth
         >
-          Зарегистрироваться
+          Register
         </Button>
       </form>
     </Paper>

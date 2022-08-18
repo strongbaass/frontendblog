@@ -37,7 +37,7 @@ export const Index = () => {
         <Avatar classes={{ root: styles.avatar }} src={avatarUrl} />
         <div className={styles.form}>
           <TextField
-            label="Написать комментарий"
+            label="Enter comment"
             variant="outlined"
             maxRows={10}
             multiline
@@ -46,7 +46,7 @@ export const Index = () => {
             onChange={(e) => onChangeValue(e.target.value)}
           />
           <Button variant="contained" onClick={onClickAddCommnet}>
-            Отправить
+            Comment
           </Button>
         </div>
       </div>

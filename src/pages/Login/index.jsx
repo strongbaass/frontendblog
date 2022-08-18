@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
-        Вход в аккаунт
+        Login in your account
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
@@ -59,7 +59,7 @@ export const Login = () => {
         />
         <TextField
           className={styles.field}
-          label="Пароль"
+          label="Password"
           type="password"
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}

@@ -18,7 +18,7 @@ export const TagsBlock = ({ items, isLoading = true }) => {
         {(isLoading ? [...Array(5)] : items).map((name, i) => (
           <Link
             style={{ textDecoration: "none", color: "black" }}
-            to={`/tags/${name}`}
+            to={`/tag/${name}`}
           >
             <ListItem key={i} disablePadding>
               <ListItemButton>

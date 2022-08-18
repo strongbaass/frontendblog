@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import { Header } from "./components";
 import { Home, FullPost, Registration, AddPost, Login } from "./pages";
 import { useEffect } from "react";
+import { SearchByTag } from "./pages/SearchByTag";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function App() {
           <Route path="/add-post" element={<AddPost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/tag/:id" element={<Home />} />
+          <Route path="/tag/:id" element={<SearchByTag />} />
         </Routes>
       </Container>
     </>

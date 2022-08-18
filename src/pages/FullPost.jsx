@@ -9,7 +9,7 @@ import axios from "../axios";
 
 export const FullPost = () => {
   const [data, setData] = useState();
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 

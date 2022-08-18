@@ -9,7 +9,7 @@ import axios from "../axios";
 
 export const FullPost = () => {
   const [data, setData] = useState();
-  const [comments, setComments] = useState("");
+  const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
@@ -18,7 +18,6 @@ export const FullPost = () => {
       .get(`https://blogreact13.herokuapp.com/posts/${id}`)
       .then((res) => {
         setData(res.data);
-        setIsLoading(false);
       })
       .catch((err) => {
         console.warn(err);
@@ -33,6 +32,7 @@ export const FullPost = () => {
           .get(`https://blogreact13.herokuapp.com/comments/${id}`)
           .then((res) => {
             setComments(res.data);
+            setIsLoading(false);
           });
       };
       fetchComments().catch((err) => {
@@ -46,6 +46,9 @@ export const FullPost = () => {
 
   if (isLoading) {
     return <Post isLoading={isLoading} isFullPost />;
+  }
+  if (!comments) {
+    return null;
   }
 
   return (

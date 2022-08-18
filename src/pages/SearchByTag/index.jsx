@@ -13,7 +13,7 @@ export const SearchByTag = () => {
   const userData = useSelector((state) => state.auth.data);
   useEffect(() => {
     const fetchTagsByName = async () => {
-      await axios.get(`http://localhost:4444/tags/${id}`).then((res) => {
+      await axios.get(`https://blogreact13.herokuapp.com/tags/${id}`).then((res) => {
         setPostsTags(res.data);
         setIsPostsLoading(false);
         setisTagsLoading(false);

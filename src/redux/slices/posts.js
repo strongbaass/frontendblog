@@ -2,24 +2,24 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
 export const fetchPosts = createAsyncThunk(
-  "http://localhost:4444/posts/fetchPosts",
+  "https://blogreact13.herokuapp.com/posts/fetchPosts",
   async () => {
-    const { data } = await axios.get("http://localhost:4444/posts");
+    const { data } = await axios.get("https://blogreact13.herokuapp.com/posts");
     return data;
   }
 );
 
 export const fetchTags = createAsyncThunk(
-  "http://localhost:4444/posts/fetchTags",
+  "https://blogreact13.herokuapp.com/posts/fetchTags",
   async () => {
-    const { data } = await axios.get("http://localhost:4444/tags");
+    const { data } = await axios.get("https://blogreact13.herokuapp.com/tags");
     return data;
   }
 );
 export const fetchRemovePost = createAsyncThunk(
   "posts/fetchRemovePost",
   (id) => {
-    axios.delete(`http://localhost:4444/posts/${id}`);
+    axios.delete(`https://blogreact13.herokuapp.com/posts/${id}`);
   }
 );
 const initialState = {

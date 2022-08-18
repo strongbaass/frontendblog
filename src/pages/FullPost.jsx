@@ -15,7 +15,7 @@ export const FullPost = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4444/posts/${id}`)
+      .get(`https://blogreact13.herokuapp.com/posts/${id}`)
       .then((res) => {
         setData(res.data);
         setIsLoading(false);
@@ -29,9 +29,11 @@ export const FullPost = () => {
   useEffect(
     () => {
       const fetchComments = async () => {
-        await axios.get(`http://localhost:4444/comments/${id}`).then((res) => {
-          setComments(res.data);
-        });
+        await axios
+          .get(`https://blogreact13.herokuapp.com/comments/${id}`)
+          .then((res) => {
+            setComments(res.data);
+          });
       };
       fetchComments().catch((err) => {
         console.warn(err);
@@ -51,11 +53,7 @@ export const FullPost = () => {
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={
-          data.imageUrl
-            ? `http://localhost:4444${data.imageUrl}`
-            : data.imageUrl
-        }
+        imageUrl={data.imageUrl}
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}

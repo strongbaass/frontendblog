@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const url = axios.create({
-  baseURL: "http://localhost:4444/",
+  baseURL: "https://blogreact13.herokuapp.com/",
 });
 
 url.interceptors.request.use((config) => {

@@ -18,6 +18,7 @@ export const FullPost = () => {
       .get(`https://blogreact13.herokuapp.com/posts/${id}`)
       .then((res) => {
         setData(res.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.warn(err);

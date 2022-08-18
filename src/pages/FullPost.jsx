@@ -33,7 +33,6 @@ export const FullPost = () => {
           .get(`https://blogreact13.herokuapp.com/comments/${id}`)
           .then((res) => {
             setComments(res.data);
-            setIsLoading(false);
           });
       };
       fetchComments().catch((err) => {
